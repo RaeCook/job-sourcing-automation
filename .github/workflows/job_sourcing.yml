@@ -1,1 +1,22 @@
 
+name: Daily Job Sourcing to ClickUp
+on:
+  schedule:
+      - cron: '0 8 * * *'
+        workflow_dispatch:
+        jobs:
+          job_sourcing:
+              runs-on: ubuntu-latest
+                  steps:
+                      - uses: actions/checkout@v3
+                          - uses: actions/setup-python@v4
+                                with:
+                                        python-version: '3.11'
+                                            - run: |
+                                                    python -m pip install --upgrade pip
+                                                            pip install requests feedparser
+                                                                - run: python3 job_sourcing_engine.py
+                                                                      env:
+                                                                              CLICKUP_TOKEN: pk_162147868_O3XBRNT93T29NH7252EM687YRF79I0H8
+                                                                                      CLICKUP_LIST_ID: "901326308224"
+                                                                                              NOTIFICATION_EMAIL: rjcook76@gmail.com
